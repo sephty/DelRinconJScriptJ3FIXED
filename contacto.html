@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/contactoComponent.css">
+
+  <title>Hotel Rincón del Carmen</title>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Rincón del Carmen</a>
+      <nav class="desktop-nav">
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+    <nav class="mobile-menu">
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="#" id="mobile-login-btn">Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <main>
+        <section class="contact-section">
+            <div class="contact-form-container">
+                <h2>Envíanos un Mensaje</h2>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Opcional">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" placeholder="Escribe tu consulta aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                </form>
+            </div>
+            <div class="additional-contact-info">
+                <h3>Información de Contacto</h3>
+                <ul>
+                    <li><strong>Correo:</strong> <a href="mailto:trillseph@gmail.com">info@rinconCarmen.com</a></li>
+                    <li><strong>Teléfono:</strong> +57  123-456-7890</li>
+                    <li><strong>Dirección:</strong>  Bucaramanga, santander colombia</li>
+                </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  <login-popup></login-popup>
+
+  <footer class="main-footer">
+    <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

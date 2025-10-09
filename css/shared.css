@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Roboto', sans-serif;
+  --color-primary: #005A87;
+  --color-text: #333;
+  --color-light-bg: #f9f9f9;
+  --color-white: #fff;
+  --color-border: #eaeaea;
+}
+* { 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+h2.section-title {
+  font-family: var(--font-heading);
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all 0.3s ease;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.main-header {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.desktop-nav {
+  display: flex;
+  gap: 1rem;
+}
+.desktop-nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.main-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-light-bg);
+}
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .main-header .container {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .desktop-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .desktop-nav a {
+    margin: 0 0.5rem;
+  }
+  .logo {
+    order: 1;
+  }
+  .header-actions {
+    order: 2;
+  }
+}

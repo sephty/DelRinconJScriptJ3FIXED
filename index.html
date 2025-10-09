@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/indexComponent.css">
+  <title>Hotel Rincón del Carmen</title>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Rincón del Carmen</a>
+      <nav class="desktop-nav">
+        <a href="gestion.html">Habitaciones</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="lista.html"> ADMIN </a>
+        <a href="userpanel.html">Cancela</a>
+      </nav>
+      <div class="header-actions">
+        <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <div id="user-info" class="hidden">
+          <span id="username-display"></span>
+          <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-deck">
+      <h2 class="section-title">Descubre Tu Refugio Ideal</h2>
+      <div class="carousel-track">
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/Deluxe-Double-Twin-Bedroom-320-2.webp');">
+      <h3>Suite Deluxe</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/deluxe-jacuzzi-1.jpg');">
+      <h3>Deluxe Jacuzzi</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/empire-hotel-superior-double-room_standard.jpg');">
+      <h3>Superior Doble</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/hotel-cassidys-21-heritage-room-double.jpg');">
+      <h3>Habitación Heritage</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/large_superior-double-2.jpg');">
+      <h3>Superior Queen</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/Lorenzo-Standard-Double-Room-with-Garden-View-3.jpg');">
+      <h3>Vista al Jardín</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/Room 408_resize.jpg');">
+      <h3>Estándar Doble</h3>
+    </div>
+  </a>
+
+  <a href="gestion.html" class="carousel-card-link">
+    <div class="carousel-card" style="background-image: url('images/hab5-6.jpg');">
+      <h3>Familiar</h3>
+    </div>
+  </a>
+</div>
+
+    </section>
+    <section id="habitaciones" class="rooms-gallery">
+      <div class="container">
+        <h2 class="section-title">Explora Nuestras Habitaciones</h2>
+        <div class="rooms-grid" id="rooms-grid-container"><p>Cargando habitaciones...</p></div>
+        <div class="section-actions"><a href="gestion.html" class="btn btn-primary">Ver Catálogo Completo</a></div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="main-footer">
+    <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

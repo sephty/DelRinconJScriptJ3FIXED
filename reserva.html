@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/reservaComponent.css">
+  <title>Confirmar Reserva - Hotel Rincón del Carmen</title>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Rincón del Carmen</a>
+      <nav class="desktop-nav">
+        <a href="index.html#habitaciones">Habitaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <div id="user-info" class="hidden">
+          <span id="username-display"></span>
+          <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="reserva-container">
+    <h1>Confirma Tu Reserva</h1>
+    <div class="reserva-wrapper">
+      <div class="habitacion-info">
+        <h2 id="habitacion-tipo">Cargando habitación...</h2>
+        <img id="habitacion-imagen" src="https://placehold.co/600x400/e0e0e0/333?text=Habitaci%C3%B3n" alt="Imagen de la habitación">
+        <p id="habitacion-descripcion"></p>
+      </div>
+      <div class="reserva-form-container">
+        <form id="reserva-form">
+          <div class="form-group">
+            <label for="fecha-llegada">Fecha de Llegada</label>
+            <input type="date" id="fecha-llegada" required>
+          </div>
+          <div class="form-group">
+            <label for="fecha-salida">Fecha de Salida</label>
+            <input type="date" id="fecha-salida" required>
+          </div>
+          <div class="form-group">
+            <label for="cantidad-huespedes">Número de Huéspedes</label>
+            <input type="number" id="cantidad-huespedes" min="1" value="1" required>
+          </div>
+          <div class="price-summary">
+            <h3>Resumen de Precio</h3>
+            <p><span id="noches-calculadas">0</span> noches x $<span id="habitacion-precio">0</span>/noche</p>
+            <hr>
+            <p class="total">Total: $<span id="total-price">0</span></p>
+          </div>
+          <p id="form-status-message" class="error-message"></p>
+          <button type="submit">Confirmar Reserva</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
+  </footer>
+
+  <script type="module" src="./App/Components/reserva/reservaComponent.js"></script>
+</body>
+</html>

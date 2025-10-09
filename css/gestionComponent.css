@@ -1,0 +1,39 @@
+.gestion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.gestion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gestion-header h1 {
+    font-family: var(--font-heading);
+}
+
+#search-input {
+    flex-grow: 1;
+    min-width: 250px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+}

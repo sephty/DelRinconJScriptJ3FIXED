@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/user.css" />
+  <title>Mis Reservas - Hotel Rincón del Carmen</title>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Rincón del Carmen</a>
+      <nav class="desktop-nav">
+        <a href="index.html#habitaciones">Habitaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="header-actions">
+        <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <div id="user-info" class="hidden">
+          <span id="username-display"></span>
+          <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="misreservas-container">
+    <h1>Mis Reservas</h1>
+    <div id="reservas-container">
+      <p>Cargando tus reservas...</p>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
+  </footer>
+
+  <script type="module" src="user.js"></script>
+</body>
+</html>

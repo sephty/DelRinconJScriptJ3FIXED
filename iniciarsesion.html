@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/shared.css">
+  <title>Iniciar Sesión - Hotel Rincón del Carmen</title>
+  <style>
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 1.5rem;
+      background-color: var(--color-light-bg, #f5f5f5);
+      min-height: calc(100vh - 150px);
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <a href="index.html" class="logo">Rincón del Carmen</a>
+      <nav class="desktop-nav">
+        <a href="index.html#habitaciones">Habitaciones</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="header-actions"></div>
+    </div>
+  </header>
+
+  <main class="auth-container">
+    <auth-form-component></auth-form-component>
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
+  </footer>
+
+  <script type="module" src="./App/Components/sesion/sesionauthComponent.js"></script>
+</body>
+</html>
