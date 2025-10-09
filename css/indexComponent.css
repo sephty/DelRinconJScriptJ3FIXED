@@ -1,34 +1,187 @@
+:root {
+  --color-light-bg: #f9f9f9;
+  --color-white: #fff;
+  --color-dark: #333;
+  --font-heading: 'Poppins', sans-serif;
+}
+
+.hero-deck {
+  padding: 4rem 0;
+  background-color: var(--color-light-bg);
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-deck h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-dark);
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 90%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .carousel-card {
   width: 300px;
   height: 380px;
   flex-shrink: 0;
-  border-radius: 10px;
+  background-color: var(--color-white);
+  border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.5rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
 
-.carousel-card::before {
+.carousel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.carousel-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.carousel-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
-  border-radius: 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  z-index: 1;
 }
 
 .carousel-card h3 {
   position: relative;
-  z-index: 1;
-  color: white;
-  background: rgba(0,0,0,0.4);
-  padding: 0.8rem;
-  border-radius: 5px;
+  z-index: 2;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  padding: 1rem;
   margin: 0;
 }
+
+.rooms-gallery {
+  padding: 4rem 0;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.room-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-card-content {
+  padding: 1rem;
+}
+
+.room-card-content h4 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.5rem;
+}
+
+.room-card-content p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.section-actions a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-dark);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.section-actions a:hover {
+  background: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .carousel-card {
+    width: 220px;
+    height: 300px;
+  }
+
+  .carousel-track {
+    gap: 1rem;
+  }
+
+  .hero-deck h2 {
+    font-size: 1.6rem;
+  }
+}
+
