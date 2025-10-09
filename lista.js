@@ -48,7 +48,7 @@ document.querySelectorAll(".admin-tabs button").forEach(btn => {
 
 // --- Usuarios ---
 async function loadUsuarios() {
-	const res = await fetch(`${API_URL}/users`);
+	const res = await fetch(`${API_URL}/usuarios`);
 	const data = await res.json();
 
 	const tbody = document.querySelector("#usuarios-table tbody");
@@ -57,7 +57,7 @@ async function loadUsuarios() {
 		tbody.innerHTML += `
 			<tr>
 				<td>${u.id}</td>
-				<td>${u.name}</td>
+				<td>${u.nombreCompleto}</td>
 				<td>${u.email}</td>
 				<td>${u.phone}</td>
 				<td>${u.role}</td>
@@ -70,13 +70,13 @@ async function loadUsuarios() {
 
 async function deleteUser(id) {
 	if (!confirm("¿Eliminar este usuario?")) return;
-	await fetch(`${API_URL}/users/${id}`, { method: "DELETE" });
+	await fetch(`${API_URL}/usuarios/${id}`, { method: "DELETE" });
 	loadUsuarios();
 }
 
 // --- Habitaciones ---
 async function loadHabitaciones() {
-	const res = await fetch(`${API_URL}/rooms`);
+	const res = await fetch(`${API_URL}/habitaciones`);
 	const data = await res.json();
 
 	const tbody = document.querySelector("#habitaciones-table tbody");
@@ -85,9 +85,9 @@ async function loadHabitaciones() {
 		tbody.innerHTML += `
 			<tr>
 				<td>${r.id}</td>
-				<td>${r.name}</td>
-				<td>$${r.price}</td>
-				<td>${r.maxPeople}</td>
+				<td>${r.tipo}</td>
+				<td>$${r.precioNoche}</td>
+				<td>${r.capacidadPersonas}</td>
 				<td>${r.services.join(", ")}</td>
 				<td>
 					<button class="action delete" onclick="deleteRoom('${r.id}')">Eliminar</button>
@@ -98,13 +98,13 @@ async function loadHabitaciones() {
 
 async function deleteRoom(id) {
 	if (!confirm("¿Eliminar esta habitación?")) return;
-	await fetch(`${API_URL}/rooms/${id}`, { method: "DELETE" });
+	await fetch(`${API_URL}/habitaciones/${id}`, { method: "DELETE" });
 	loadHabitaciones();
 }
 
 // --- Reservas ---
 async function loadReservas() {
-	const res = await fetch(`${API_URL}/reservations`);
+	const res = await fetch(`${API_URL}/reservas`);
 	const data = await res.json();
 
 	const tbody = document.querySelector("#reservas-table tbody");
@@ -113,10 +113,10 @@ async function loadReservas() {
 		tbody.innerHTML += `
 			<tr>
 				<td>${r.id}</td>
-				<td>${r.userName}</td>
-				<td>${r.roomName}</td>
-				<td>${r.from}</td>
-				<td>${r.to}</td>
+				<td>${r.usuarioId}</td>
+				<td>${r.habitacionId}</td>
+				<td>${r.fechaLlegada}</td>
+				<td>${r.fechaSalida}</td>
 				<td>${r.status}</td>
 				<td>
 					<button class="action delete" onclick="deleteReserva('${r.id}')">Eliminar</button>
@@ -127,7 +127,6 @@ async function loadReservas() {
 
 async function deleteReserva(id) {
 	if (!confirm("¿Eliminar esta reserva?")) return;
-	await fetch(`${API_URL}/reservations/${id}`, { method: "DELETE" });
+	await fetch(`${API_URL}/reservas/${id}`, { method: "DELETE" });
 	loadReservas();
 }
-

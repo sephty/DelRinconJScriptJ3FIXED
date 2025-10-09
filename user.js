@@ -1,6 +1,6 @@
-import { getUsuarioActual, haySesionActiva, cerrarSesion } from '../Apis/Gestion/Sesion/sesionApi.js';
-import { getReservas, deleteReserva } from '../Apis/Gestion/Reservas/reservasApi.js';
-import { getHabitaciones } from '../Apis/Gestion/Habitaciones/habitacionesApi.js';
+import { getUsuarioActual, haySesionActiva, cerrarSesion } from './Apis/Gestion/Sesion/sesionApi.js';
+import { getReservas, deleteReserva } from './Apis/Gestion/reserva/reservaApi.js';
+import { getHabitaciones } from './Apis/Gestion/Habitaciones/habitacionesApi.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const userInfo = document.getElementById('user-info');

@@ -1,11 +1,29 @@
-import './App/Components/gestion/habitacionReg.js';
-import { getHabitaciones } from './Apis/Gestion/habitaciones/habitacionesApi.js';
-import { getReservas } from './Apis/Gestion/reserva/reservaApi.js';
+
+import '../gestion/habitacionreg.js';
+import { getHabitaciones } from '../../../Apis/Gestion/habitaciones/habitacionesApi.js';
+import { getReservas } from '../../../Apis/Gestion/reserva/reservaApi.js';
+
+import { haySesionActiva, cerrarSesion, getUsuarioActual } from '../../../Apis/Gestion/Sesion/sesionApi.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('search-input');
     const grid = document.getElementById('habitaciones-grid');
+    const loginBtn = document.getElementById('login-btn');
+    const userInfo = document.getElementById('user-info');
+    const usernameDisplay = document.getElementById('username-display');
+    const logoutBtn = document.getElementById('logout-btn');
     let allHabitaciones = [];
+
+    if (haySesionActiva()) {
+        const usuario = getUsuarioActual();
+        loginBtn.classList.add('hidden');
+        userInfo.classList.remove('hidden');
+        usernameDisplay.textContent = usuario.nombreCompleto;
+        logoutBtn.addEventListener('click', () => {
+            cerrarSesion();
+            window.location.reload();
+        });
+    }
 
     const loadData = async () => {
         const habitaciones = await getHabitaciones() || [];
@@ -14,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         allHabitaciones = habitaciones.map(hab => ({
             ...hab,
-            isReserved: reservedIds.has(hab.id)
+            isReserved: reservedIds.has(parseInt(hab.id))
         }));
         
         renderGrid();
@@ -24,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const searchTerm = searchInput.value.toLowerCase();
         grid.innerHTML = '';
 
-        const filtered = allHabitacinones.filter(hab => 
+        const filtered = allHabitaciones.filter(hab => 
             hab.tipo.toLowerCase().includes(searchTerm)
         );
 
@@ -41,6 +59,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     searchInput.addEventListener('input', renderGrid);
 
+    // Load data for all users, regardless of session status
     loadData();
 });
-

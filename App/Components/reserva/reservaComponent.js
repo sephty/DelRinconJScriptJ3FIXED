@@ -1,6 +1,6 @@
-import { getHabitacionById } from './Apis/Gestion/habitaciones/habitacionesApi.js';
-import { createReserva } from './Apis/Gestion/reserva/reservaApi.js';
-import { haySesionActiva, getUsuarioIdActual } from './Apis/Gestion/Sesion/sesionApi.js';
+import { getHabitacionById } from '../../../Apis/Gestion/habitaciones/habitacionesApi.js';
+import { createReserva } from '../../../Apis/Gestion/reserva/reservaApi.js';
+import { haySesionActiva, getUsuarioIdActual } from '../../../Apis/Gestion/Sesion/sesionApi.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const habitacionId = sessionStorage.getItem('selectedHabitacionId');

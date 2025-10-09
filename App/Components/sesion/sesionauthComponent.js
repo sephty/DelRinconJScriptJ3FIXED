@@ -43,7 +43,7 @@ class AuthFormComponent extends HTMLElement {
 					const usuario = await iniciarSesion(identificacion, password);
 
 					if (usuario) {
-						localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+						sessionStorage.setItem('usuarioActual', JSON.stringify(usuario));
 
 						if (usuario.rol === 'admin') {
 							window.location.href = 'userpanel.html';
