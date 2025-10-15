@@ -35,7 +35,7 @@
              body: JSON.stringify(nuevareclamo),
          });
          if (!response.ok) {
-             throw new Error('Error al crear la reclamo.');
+             throw new Error('Error al crear el reclamo.');
          }
          return await response.json();
      } catch (error) {
@@ -53,7 +53,7 @@
              body: JSON.stringify(datosActualizados),
          });
          if (!response.ok) {
-             throw new Error(`Error al actualizar la reclamo con id ${id}.`);
+             throw new Error(`Error al actualizar el reclamo con id ${id}.`);
          }
          return await response.json();
      } catch (error) {
@@ -67,7 +67,7 @@
              method: 'DELETE',
          });
          if (!response.ok) {
-             throw new Error(`Error al eliminar la reclamo con id ${id}.`);
+             throw new Error(`Error al eliminar el reclamo con id ${id}.`);
          }
          console.log(`reclamo con id ${id} eliminada.`);
      } catch (error) {

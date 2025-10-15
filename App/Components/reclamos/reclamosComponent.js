@@ -1,6 +1,6 @@
 import { getUsuarioActual, haySesionActiva, cerrarSesion } from '../../../Apis/Gestion/Sesion/sesionApi.js';
 import { getReservas } from '../../../Apis/Gestion/reserva/reservaApi.js';
-import { getHabitaciones } from '../../../Apis/Gestion/habitaciones/habitacionesApi.js';
+import { getreclamos } from '../../../Apis/Gestion/reclamos/reclamoApi.js'
 
 const UI_STRINGS = {
   LOGIN_REQUIRED: 'Debes iniciar sesión para hacer un reclamo.',
@@ -37,4 +37,6 @@ const setupSession = () => {
 };
 
 
-const 
+const ReclamoCreate = (reserva, reclamo) => {
+
+}

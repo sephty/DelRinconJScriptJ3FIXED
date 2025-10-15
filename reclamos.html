@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/shared.css">
-  <link rel="stylesheet" href="css/reservaComponent.css">
-  <title>Confirmar Reserva - Hotel Rincón del Carmen</title>
+  <link rel="stylesheet" href="css/reclamosComponent.css">
+  <title>Confirmar reclamos - Hotel Rincón del Carmen</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <a href="gestion.html">Habitaciones</a>
         <a href="contacto.html">Contacto</a>
         <a href="list.html" id="admin-link" class="hidden">ADMIN</a>
-        <a href="userpanel.html" id="user-panel-link" class="hidden">Mis Reservas</a>
+        <a href="userpanel.html" id="user-panel-link" class="hidden">Mis reclamos</a>
       </nav>
       <div class="header-actions">
         <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
@@ -28,15 +28,39 @@
     </div>
   </header>
   <main>
-    <h1>Reclamos</h1>
-  </main>
+    <section id="reclamos" class="tab-content">
+        <h2>Gestión de reclamos</h2>
+        <button class="add-btn" data-form="reclamos-form">Añadir reclamos</button>
+        <form id="reclamos-form" class="admin-form hidden">
+            <input type="hidden" id="reclamos-id">
+            <input type="number" id="reclamos-usuarioId" placeholder="ID Usuario" required>
+            <input type="number" id="reclamos-reservaId" placeholder="ID reserva" required>
+            <input type="text" id="reclamos-descripcion" placeholder="Descripcion" required>
+            <button type="submit">Guardar reclamos</button>
+            <button type="button" class="cancel-btn">Cancelar</button>
+        </form>
+        <table id="reclamos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>reclamos</th>
+                    <th>Desde</th>
+                    <th>Hasta</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
   </main>
 
   <footer class="main-footer">
     <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
   </footer>
 
-  <script type="module" src="./App/Components/reserva/reservaComponent.js"></script>
+  <script type="module" src="./App/Components/reclamos/reclamosComponent.js"></script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

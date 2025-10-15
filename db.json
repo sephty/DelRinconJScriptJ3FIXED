@@ -374,5 +374,15 @@
       "estado": "confirmada",
       "fechaReserva": "2025-10-10T20:38:39.902Z"
     }
+  ],
+  "reclamos" : [
+    {
+      "id": 110,
+      "usuarioID": 2,
+      "reservaID": 1,
+      "tipo": "Queja",
+      "descripcion": "habitacion desordenada",
+      "estado": "resuelto"
+}
   ]
 }
