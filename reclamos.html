@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/reclamosComponent.css">
-  <title>Confirmar reclamos - Hotel Rincón del Carmen</title>
+  <title>Mis Quejas y Reclamos - Hotel Rincón del Carmen</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <a href="gestion.html">Habitaciones</a>
         <a href="contacto.html">Contacto</a>
         <a href="list.html" id="admin-link" class="hidden">ADMIN</a>
-        <a href="userpanel.html" id="user-panel-link" class="hidden">Mis reclamos</a>
+        <a href="userpanel.html" id="user-panel-link" class="hidden">Panel de Usuario</a>
       </nav>
       <div class="header-actions">
         <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
@@ -27,27 +27,55 @@
       </div>
     </div>
   </header>
-  <main>
-    <section id="reclamos" class="tab-content">
-        <h2>Gestión de reclamos</h2>
-        <button class="add-btn" data-form="reclamos-form">Añadir reclamos</button>
-        <form id="reclamos-form" class="admin-form hidden">
-            <input type="hidden" id="reclamos-id">
-            <input type="number" id="reclamos-usuarioId" placeholder="ID Usuario" required>
-            <input type="number" id="reclamos-reservaId" placeholder="ID reserva" required>
-            <input type="text" id="reclamos-descripcion" placeholder="Descripcion" required>
-            <button type="submit">Guardar reclamos</button>
-            <button type="button" class="cancel-btn">Cancelar</button>
+  
+  <main class="container">
+    <section id="reclamos-section">
+        <h2>Mis Quejas y Reclamos</h2>
+        <button id="add-reclamo-btn" class="btn btn-primary">Crear Queja o Reclamo</button>
+        
+        <form id="reclamo-form" class="admin-form hidden">
+            <h3>Nueva Queja o Reclamo</h3>
+            <input type="hidden" id="reclamo-id">
+            
+            <div class="form-group">
+                <label for="reserva-select">Seleccione su Reserva:</label>
+                <select id="reserva-select" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-asunto">Asunto:</label>
+                <input type="text" id="reclamo-asunto" placeholder="Ej: Problema con la ducha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-tipo">Tipo:</label>
+                <select id="reclamo-tipo" required>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-descripcion">Descripción:</label>
+                <textarea id="reclamo-descripcion" rows="4" placeholder="Describa su queja o reclamo detalladamente." required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="button" id="cancel-reclamo-btn" class="btn btn-secondary">Cancelar</button>
+            </div>
         </form>
+
+        <h3>Historial de Quejas y Reclamos</h3>
         <table id="reclamos-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>reclamos</th>
-                    <th>Desde</th>
-                    <th>Hasta</th>
+                    <th>Reserva</th>
+                    <th>Asunto</th>
+                    <th>Tipo</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -60,7 +88,7 @@
     <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
   </footer>
 
-  <script type="module" src="./App/Components/reclamos/reclamosComponent.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script src="./App/Components/reclamos/reclamosComponent.js" type="module"></script>
+  <script src="./app.js" type="module"></script>
 </body>
 </html>
