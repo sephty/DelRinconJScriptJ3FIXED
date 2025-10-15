@@ -46,7 +46,7 @@ class AuthFormComponent extends HTMLElement {
 						sessionStorage.setItem('usuarioActual', JSON.stringify(usuario));
 
 						if (usuario.rol === 'admin') {
-							window.location.href = 'userpanel.html';
+							window.location.href = 'list.html';
 						} else {
 							window.location.href = 'index.html';
 						}
@@ -90,85 +90,64 @@ class AuthFormComponent extends HTMLElement {
 
 	render() {
 		this.shadowRoot.innerHTML = `
+			<link rel="stylesheet" href="../../../css/auth.css">
 			<style>
-				:host {
-					display: block;
-					font-family: Arial, sans-serif;
-				}
 				.hidden { display: none !important; }
-				.form-wrapper {
-					background: white;
-					padding: 2.5rem 2rem 2rem 2rem;
-					border-radius: 8px;
-					width: 100%;
-					max-width: 420px;
-					box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-				}
-				.form-wrapper form {
-					display: flex;
-					flex-direction: column;
-					gap: 1rem;
-				}
-				.form-wrapper input, .form-wrapper select {
-					padding: 0.8rem;
-					border: 1px solid #ccc;
-					border-radius: 4px;
-				}
-				.form-wrapper button {
-					padding: 0.8rem;
-					background-color: var(--color-primary, #3b82f6);
-					color: white;
-					border: none;
-					border-radius: 4px;
-					cursor: pointer;
-				}
-				.form-wrapper button:hover {
-					background-color: #2563eb;
-				}
-				.toggle-link {
-					color: var(--color-primary, #3b82f6);
-					text-decoration: underline;
-					cursor: pointer;
-					text-align: center;
-					margin-top: 1rem;
-					font-size: 0.9rem;
-				}
-				.error-message {
-					color: red;
-					font-size: 0.9rem;
-					min-height: 1.2em;
-					text-align: center;
-					margin-top: 0.5rem;
-				}
 			</style>
 
 			<div class="form-wrapper">
+				<!-- Login View -->
 				<div id="login-view">
-					<h3>Iniciar Sesión</h3>
+					<h2>Iniciar Sesión</h2>
 					<form id="login-form">
-						<input type="text" id="identificacion-login" placeholder="Número de identificación" required>
-						<input type="password" id="password-login" placeholder="Contraseña" required>
+						<div class="input-group">
+							<label for="identificacion-login">Número de identificación</label>
+							<input type="text" id="identificacion-login" required>
+						</div>
+						<div class="input-group">
+							<label for="password-login">Contraseña</label>
+							<input type="password" id="password-login" required>
+						</div>
 						<p id="login-error-message" class="error-message"></p>
-						<button type="submit">Entrar</button>
+						<button type="submit" class="btn-submit">Entrar</button>
 					</form>
 					<p class="toggle-link" id="toggle-to-register">¿No tienes una cuenta? Regístrate</p>
 				</div>
 
+				<!-- Register View -->
 				<div id="register-view" class="hidden">
-					<h3>Crear Cuenta</h3>
+					<h2>Crear Cuenta</h2>
 					<form id="register-form">
-						<input type="text" name="identificacion" placeholder="Número de identificación" required>
-						<input type="text" name="nombreCompleto" placeholder="Nombre completo" required>
-						<select name="nacionalidad" required>
-							<option value="">Seleccione su nacionalidad</option>
-							<option value="Colombiana">Colombiana</option>
-							<option value="Extranjera">Extranjera</option>
-						</select>
-						<input type="email" name="email" placeholder="Correo electrónico" required>
-						<input type="tel" name="telefono" placeholder="Teléfono" required>
-						<input type="password" name="password" placeholder="Contraseña" required>
+						<div class="input-group">
+							<label for="identificacion-register">Número de identificación</label>
+							<input type="text" id="identificacion-register" name="identificacion" required>
+						</div>
+						<div class="input-group">
+							<label for="nombreCompleto-register">Nombre completo</label>
+							<input type="text" id="nombreCompleto-register" name="nombreCompleto" required>
+						</div>
+						<div class="input-group">
+							<label for="nacionalidad-register">Nacionalidad</label>
+							<select id="nacionalidad-register" name="nacionalidad" required>
+								<option value="">Seleccione su nacionalidad</option>
+								<option value="Colombiana">Colombiana</option>
+								<option value="Extranjera">Extranjera</option>
+							</select>
+						</div>
+						<div class="input-group">
+							<label for="email-register">Correo electrónico</label>
+							<input type="email" id="email-register" name="email" required>
+						</div>
+						<div class="input-group">
+							<label for="telefono-register">Teléfono</label>
+							<input type="tel" id="telefono-register" name="telefono" required>
+						</div>
+						<div class="input-group">
+							<label for="password-register">Contraseña</label>
+							<input type="password" id="password-register" name="password" required>
+						</div>
 						<p id="register-error-message" class="error-message"></p>
-						<button type="submit">Registrarse</button>
+						<button type="submit" class="btn-submit">Registrarse</button>
 					</form>
 					<p class="toggle-link" id="toggle-to-login">¿Ya tienes una cuenta? Inicia sesión</p>
 				</div>

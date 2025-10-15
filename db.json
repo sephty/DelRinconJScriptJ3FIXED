@@ -1,8 +1,8 @@
 {
   "usuarios": [
     {
-      "id": "1",
-      "identificacion": "000000001",
+      "id": 1,
+      "identificacion": "0123ad",
       "nombreCompleto": "Administrador General",
       "nacionalidad": "Colombiana",
       "email": "admin@hotel.com",
@@ -11,7 +11,7 @@
       "rol": "admin"
     },
     {
-      "id": "2",
+      "id": 2,
       "identificacion": "123456789",
       "nombreCompleto": "Joseph García",
       "nacionalidad": "Colombiana",
@@ -21,7 +21,7 @@
       "rol": "admin"
     },
     {
-      "id": "3",
+      "id": 3,
       "identificacion": "987654321",
       "nombreCompleto": "Carlos Sánchez",
       "nacionalidad": "Española",
@@ -31,7 +31,7 @@
       "rol": "usuario"
     },
     {
-      "id": "d98e",
+      "id": 4,
       "identificacion": "123456",
       "nombreCompleto": "Joseph",
       "nacionalidad": "Colombiana",
@@ -39,34 +39,48 @@
       "telefono": "123456",
       "password": "kakashi01",
       "rol": "usuario"
+    },
+    {
+      "id": 5,
+      "identificacion": "123455",
+      "nombreCompleto": "1234",
+      "nacionalidad": "Extranjera",
+      "email": "haha@gmail.com",
+      "telefono": "123456",
+      "password": "kakashi",
+      "rol": "usuario"
     }
   ],
   "habitaciones": [
     {
-      "id": "101",
+      "id": 101,
       "tipo": "Estándar Doble",
-      "camas": "1 Doble",
+      "precioNoche": 190,
+      "capacidadPersonas": 2,
+      "descripcion": "Habitación básica y cómoda con una cama doble, perfecta para parejas o viajeros solos.",
       "servicios": [
         "Internet",
         "Aire Acondicionado",
         "TV"
       ],
-      "precioNoche": 80,
-      "capacidadPersonas": 2,
-      "descripcion": "Habitación básica y cómoda con una cama doble, perfecta para parejas o viajeros solos.",
       "imagenes": [
         "hotel-cassidys-21-heritage-room-double (1).jpg",
-        "Room 408_resize.jpg"
+        "Lorenzo-Standard-Double-Room-with-Garden-View-3.jpg"
       ],
+      "camas": "1 Doble",
       "disponibilidad": [
         {
-          "desde": "2025-10-10",
-          "hasta": "2025-12-31"
+          "desde": "2025-10-20",
+          "hasta": "2025-10-25"
+        },
+        {
+          "desde": "2025-11-05",
+          "hasta": "2025-11-10"
         }
       ]
     },
     {
-      "id": "201",
+      "id": 201,
       "tipo": "Superior Queen con Balcón",
       "camas": "1 Queen",
       "servicios": [
@@ -80,18 +94,22 @@
       "capacidadPersonas": 2,
       "descripcion": "Disfruta del aire fresco y las vistas desde tu balcón privado.",
       "imagenes": [
-        "large-superior-double-2.jpg",
-        "Deluxe-Double-Twin-Bedroom-320-2.webp"
+        "Deluxe-Double-Twin-Bedroom-320-2.webp",
+        "Room 408_resize.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-09-15",
-          "hasta": "2025-12-31"
+          "desde": "2025-11-15",
+          "hasta": "2025-11-20"
+        },
+        {
+          "desde": "2025-12-01",
+          "hasta": "2025-12-05"
         }
       ]
     },
     {
-      "id": "401",
+      "id": 401,
       "tipo": "Suite Deluxe con Jacuzzi",
       "camas": "1 King",
       "servicios": [
@@ -111,13 +129,13 @@
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-10-15",
+          "hasta": "2025-10-20"
         }
       ]
     },
     {
-      "id": "102",
+      "id": 102,
       "tipo": "Estándar Twin",
       "camas": "2 Individuales",
       "servicios": [
@@ -129,18 +147,18 @@
       "capacidadPersonas": 2,
       "descripcion": "Dos camas individuales ideales para compañeros de viaje.",
       "imagenes": [
-        "hotel-cassidys-21-heritage-room-double.jpg",
-        "Lorenzo-Standard-Double-Room-with-Garden-View-3.jpg"
+        "hotel-cassidys-21-heritage-room-double (1).jpg",
+        "hab5-6.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-10",
-          "hasta": "2025-12-31"
+          "desde": "2025-12-10",
+          "hasta": "2025-12-15"
         }
       ]
     },
     {
-      "id": "202",
+      "id": 202,
       "tipo": "Superior King",
       "camas": "1 King",
       "servicios": [
@@ -153,18 +171,22 @@
       "capacidadPersonas": 2,
       "descripcion": "Espaciosa habitación con cama King y comodidades superiores.",
       "imagenes": [
-        "large-superior-double-2.jpg",
-        "Deluxe-Double-Twin-Bedroom-320-2.webp"
+        "Deluxe-Double-Twin-Bedroom-320-2.webp",
+        "empire-hotel-superior-double-room_standard.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-09-15",
-          "hasta": "2025-12-31"
+          "desde": "2025-11-01",
+          "hasta": "2025-11-05"
+        },
+        {
+          "desde": "2025-11-20",
+          "hasta": "2025-11-25"
         }
       ]
     },
     {
-      "id": "301",
+      "id": 301,
       "tipo": "Triple Estándar",
       "camas": "3 Individuales",
       "servicios": [
@@ -177,17 +199,17 @@
       "descripcion": "Habitación para tres personas con camas individuales.",
       "imagenes": [
         "hab5-6.jpg",
-        "OIP.jpeg"
+        "Room 408_resize.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-10-25",
+          "hasta": "2025-10-30"
         }
       ]
     },
     {
-      "id": "302",
+      "id": 302,
       "tipo": "Triple con Cama + Sofá",
       "camas": "1 Doble + Sofá Cama",
       "servicios": [
@@ -201,17 +223,17 @@
       "descripcion": "Cama doble más sofá cama para un tercero.",
       "imagenes": [
         "Deluxe-Double-Twin-Bedroom-320-2.webp",
-        "Room 408_resize.jpg"
+        "Lorenzo-Standard-Double-Room-with-Garden-View-3.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-11-10",
+          "hasta": "2025-11-15"
         }
       ]
     },
     {
-      "id": "402",
+      "id": 402,
       "tipo": "Suite Junior",
       "camas": "1 Queen",
       "servicios": [
@@ -225,18 +247,18 @@
       "capacidadPersonas": 2,
       "descripcion": "Suite compacta con sala de estar y cama Queen.",
       "imagenes": [
-        "IMG_5408_m.jpg",
-        "empire-hotel-superior-double-room_standard.jpg"
+        "deluxe-jacuzzi-1.jpg",
+        "hotel-cassidys-21-heritage-room-double (1).jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-12-05",
+          "hasta": "2025-12-10"
         }
       ]
     },
     {
-      "id": "403",
+      "id": 403,
       "tipo": "Suite Panorámica",
       "camas": "1 King",
       "servicios": [
@@ -250,18 +272,22 @@
       "capacidadPersonas": 2,
       "descripcion": "Suite amplia con balcón panorámico y vistas excepcionales.",
       "imagenes": [
-        "image.png",
-        "large-superior-double-2.jpg"
+        "empire-hotel-superior-double-room_standard.jpg",
+        "Deluxe-Double-Twin-Bedroom-320-2.webp"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-10-10",
+          "hasta": "2025-10-15"
+        },
+        {
+          "desde": "2025-11-25",
+          "hasta": "2025-11-30"
         }
       ]
     },
     {
-      "id": "404",
+      "id": 404,
       "tipo": "Suite Presidencial",
       "camas": "2 King",
       "servicios": [
@@ -278,17 +304,17 @@
       "descripcion": "La suite más lujosa con múltiples ambientes y jacuzzi.",
       "imagenes": [
         "deluxe-jacuzzi-1.jpg",
-        "image.png"
+        "hab5-6.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-01",
-          "hasta": "2025-12-31"
+          "desde": "2025-12-20",
+          "hasta": "2025-12-25"
         }
       ]
     },
     {
-      "id": "305",
+      "id": 305,
       "tipo": "Familiar Cuádruple",
       "camas": "2 Doble",
       "servicios": [
@@ -301,18 +327,18 @@
       "capacidadPersonas": 4,
       "descripcion": "Ideal para familias: dos camas dobles amplias para hasta cuatro personas.",
       "imagenes": [
-        "empire-hotel-superior-double-room_standard.jpg",
-        "Deluxe-Double-Twin-Bedroom-320-2.webp"
+        "hab5-6.jpg",
+        "Room 408_resize.jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-10",
-          "hasta": "2025-12-31"
+          "desde": "2025-11-01",
+          "hasta": "2025-11-10"
         }
       ]
     },
     {
-      "id": "306",
+      "id": 306,
       "tipo": "Superior Vista Ciudad",
       "camas": "1 Queen",
       "servicios": [
@@ -326,28 +352,27 @@
       "capacidadPersonas": 2,
       "descripcion": "Habitación superior con vistas a la ciudad.",
       "imagenes": [
-        "hotel-cassidys-21-heritage-room-double.jpg",
-        "Room 408_resize.jpg"
+        "Lorenzo-Standard-Double-Room-with-Garden-View-3.jpg",
+        "hotel-cassidys-21-heritage-room-double (1).jpg"
       ],
       "disponibilidad": [
         {
-          "desde": "2025-10-10",
-          "hasta": "2025-12-31"
+          "desde": "2025-10-12",
+          "hasta": "2025-10-18"
         }
       ]
     }
   ],
   "reservas": [
     {
-      "id": "1",
+      "id": 1,
       "usuarioId": 2,
       "habitacionId": 101,
       "fechaLlegada": "2025-11-01",
-      "fechaSalida": "2025-11-05",
+      "fechaSalida": "2025-11-30",
       "cantidadHuespedes": 2,
       "estado": "confirmada",
-      "fechaReserva": "2025-10-05T10:00:00Z",
-      "totalPagado": 320
+      "fechaReserva": "2025-10-10T20:38:39.902Z"
     }
   ]
 }

@@ -13,9 +13,10 @@
 		<div class="container">
 			<a href="index.html" class="logo">Rincón del Carmen</a>
 			<nav class="desktop-nav">
-				<a href="index.html#habitaciones">Habitaciones</a>
+				<a href="gestion.html">Habitaciones</a>
 				<a href="contacto.html">Contacto</a>
-				<a href="admin.html" id="admin-link" class="active">Administración</a>
+				<a href="list.html" id="admin-link" class="hidden">ADMIN</a>
+				<a href="userpanel.html" id="user-panel-link" class="hidden">Mis Reservas</a>
 			</nav>
 			<div class="header-actions">
 				<a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
@@ -38,6 +39,21 @@
 
 		<section id="usuarios" class="tab-content active">
 			<h2>Gestión de Usuarios</h2>
+			<button class="add-btn" data-form="usuario-form">Añadir Usuario</button>
+			<form id="usuario-form" class="admin-form hidden">
+				<input type="hidden" id="usuario-id">
+				<input type="text" id="usuario-nombre" placeholder="Nombre Completo" required>
+				<input type="email" id="usuario-email" placeholder="Email" required>
+				<input type="text" id="usuario-identificacion" placeholder="Identificación" required>
+				<input type="tel" id="usuario-telefono" placeholder="Teléfono">
+				<input type="password" id="usuario-password" placeholder="Contraseña (dejar en blanco para no cambiar)">
+				<select id="usuario-rol">
+					<option value="usuario">Usuario</option>
+					<option value="admin">Admin</option>
+				</select>
+				<button type="submit">Guardar Usuario</button>
+				<button type="button" class="cancel-btn">Cancelar</button>
+			</form>
 			<table id="usuarios-table">
 				<thead>
 					<tr>
@@ -55,6 +71,20 @@
 
 		<section id="habitaciones" class="tab-content">
 			<h2>Gestión de Habitaciones</h2>
+			<button class="add-btn" data-form="habitacion-form">Añadir Habitación</button>
+			<form id="habitacion-form" class="admin-form hidden">
+				<input type="hidden" id="habitacion-id">
+				<input type="text" id="habitacion-tipo" placeholder="Tipo de Habitación" required>
+				<input type="number" id="habitacion-precio" placeholder="Precio por Noche" required>
+				<input type="number" id="habitacion-capacidad" placeholder="Capacidad de Personas" required>
+				<textarea id="habitacion-descripcion" placeholder="Descripción"></textarea>
+				<input type="text" id="habitacion-servicios" placeholder="Servicios (separados por coma)">
+				<input type="text" id="habitacion-imagenes" placeholder="Imágenes (separadas por coma)">
+				<input type="text" id="habitacion-camas" placeholder="Camas">
+
+				<button type="submit">Guardar Habitación</button>
+				<button type="button" class="cancel-btn">Cancelar</button>
+			</form>
 			<table id="habitaciones-table">
 				<thead>
 					<tr>
@@ -72,6 +102,18 @@
 
 		<section id="reservas" class="tab-content">
 			<h2>Gestión de Reservas</h2>
+			<button class="add-btn" data-form="reserva-form">Añadir Reserva</button>
+			<form id="reserva-form" class="admin-form hidden">
+				<input type="hidden" id="reserva-id">
+				<input type="number" id="reserva-usuarioId" placeholder="ID Usuario" required>
+				<input type="number" id="reserva-habitacionId" placeholder="ID Habitación" required>
+				<input type="date" id="reserva-fechaLlegada" required>
+				<input type="date" id="reserva-fechaSalida" required>
+				<input type="number" id="reserva-huespedes" placeholder="Huéspedes" required>
+				<input type="text" id="reserva-estado" placeholder="Estado (e.g., confirmada)" required>
+				<button type="submit">Guardar Reserva</button>
+				<button type="button" class="cancel-btn">Cancelar</button>
+			</form>
 			<table id="reservas-table">
 				<thead>
 					<tr>
@@ -93,6 +135,15 @@
 		<p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
 	</footer>
 
-	<script src="js/lista.js"></script>
+    <div id="admin-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="modal-close-btn" class="close-btn">&times;</button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 </body>
+<script type="module" src="./lista.js"></script>
 </html>

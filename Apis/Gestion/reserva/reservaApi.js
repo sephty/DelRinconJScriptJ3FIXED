@@ -13,6 +13,18 @@ export const getReservas = async () => {
     }
 };
 
+export const getReservaById = async (id) => {
+    try {
+        const response = await fetch(`${API_URL}/${id}`);
+        if (!response.ok) {
+            throw new Error(`Error al obtener la reserva con id ${id}.`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error en getReservaById:', error);
+    }
+};
+
 export const createReserva = async (nuevaReserva) => {
     try {
         const response = await fetch(API_URL, {
@@ -62,3 +74,4 @@ export const deleteReserva = async (id) => {
         console.error('Error en deleteReserva:', error);
     }
 };
+

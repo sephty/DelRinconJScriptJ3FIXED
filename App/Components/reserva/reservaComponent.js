@@ -1,92 +1,104 @@
-import { getHabitacionById } from '../../../Apis/Gestion/habitaciones/habitacionesApi.js';
-import { createReserva } from '../../../Apis/Gestion/reserva/reservaApi.js';
-import { haySesionActiva, getUsuarioIdActual } from '../../../Apis/Gestion/Sesion/sesionApi.js';
+import { getUsuarioActual, haySesionActiva, cerrarSesion } from '../../../Apis/Gestion/Sesion/sesionApi.js';
+import { getReservas, deleteReserva } from '../../../Apis/Gestion/reserva/reservaApi.js';
+import { getHabitaciones } from '../../../Apis/Gestion/habitaciones/habitacionesApi.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const habitacionId = sessionStorage.getItem('selectedHabitacionId');
-    const mainContainer = document.querySelector('.reserva-container');
+const UI_STRINGS = {
+  LOGIN_REQUIRED: 'Debes iniciar sesión para ver tus reservas.',
+  NO_RESERVAS: 'No tienes reservas actualmente.',
+  ERROR_LOADING: 'Error al cargar tus reservas. Por favor, inténtalo de nuevo más tarde.',
+  CONFIRM_CANCEL: '¿Estás seguro de que deseas cancelar esta reserva?',
+  CANCEL_SUCCESS: 'Reserva cancelada correctamente.',
+  UNKNOWN_ROOM: 'Habitación Desconocida'
+};
 
-    if (!habitacionId) {
-        mainContainer.innerHTML = '<h1>Error</h1><p>No se ha seleccionado ninguna habitación. Por favor, vuelve al <a href="gestion.html">catálogo</a>.</p>';
-        return;
+const setupSession = () => {
+  if (!haySesionActiva()) {
+    alert(UI_STRINGS.LOGIN_REQUIRED);
+    window.location.href = 'iniciarsesion.html';
+    return null;
+  }
+
+  const usuario = getUsuarioActual();
+  const userInfo = document.getElementById('user-info');
+  const loginBtn = document.getElementById('login-btn');
+  const usernameDisplay = document.getElementById('username-display');
+  const logoutBtn = document.getElementById('logout-btn');
+
+  usernameDisplay.textContent = usuario.nombreCompleto || 'Usuario';
+  userInfo.classList.remove('hidden');
+  loginBtn.classList.add('hidden');
+
+  logoutBtn.addEventListener('click', () => {
+    cerrarSesion();
+    window.location.href = 'index.html';
+  });
+
+  return usuario;
+};
+
+const createReservaCard = (reserva, habitacion) => {
+  const card = document.createElement('div');
+  card.classList.add('reserva-card');
+
+  const habitacionTipo = habitacion?.tipo || UI_STRINGS.UNKNOWN_ROOM;
+  const totalPagado = reserva.totalPagado ?? 0;
+
+  card.innerHTML = `
+    <h3>${habitacionTipo}</h3>
+    <p><strong>Fechas:</strong> ${reserva.fechaLlegada} - ${reserva.fechaSalida}</p>
+    <p><strong>Huéspedes:</strong> ${reserva.cantidadHuespedes}</p>
+    <p><strong>Precio Total:</strong> $${totalPagado}</p>
+    <button class="cancelar-btn" data-id="${reserva.id}">Cancelar Reserva</button>
+  `;
+  return card;
+};
+
+const renderReservas = (reservas, habitaciones, container) => {
+  container.innerHTML = '';
+  if (reservas.length === 0) {
+    container.innerHTML = `<p>${UI_STRINGS.NO_RESERVAS}</p>`;
+    return;
+  }
+
+  const habitacionesMap = new Map(habitaciones.map(h => [h.id.toString(), h]));
+
+  reservas.forEach(reserva => {
+    const habitacion = habitacionesMap.get(reserva.habitacionId.toString());
+    const card = createReservaCard(reserva, habitacion);
+    container.appendChild(card);
+  });
+};
+
+const handleCancelation = (container) => {
+  container.addEventListener('click', async (e) => {
+    if (!e.target.classList.contains('cancelar-btn')) return;
+
+    const reservaId = e.target.dataset.id;
+    if (confirm(UI_STRINGS.CONFIRM_CANCEL)) {
+      await deleteReserva(reservaId);
+      alert(UI_STRINGS.CANCEL_SUCCESS);
+      window.location.reload();
     }
+  });
+};
 
-    const tipoEl = document.getElementById('habitacion-tipo');
-    const descEl = document.getElementById('habitacion-descripcion');
-    const precioEl = document.getElementById('habitacion-precio');
-    const huespedesInput = document.getElementById('cantidad-huespedes');
-    const form = document.getElementById('reserva-form');
-    const statusMsg = document.getElementById('form-status-message');
+export const initUserPanel = async () => {
+  const reservasContainer = document.getElementById('reservas-container');
+  const usuario = setupSession();
 
-    const habitacion = await getHabitacionById(habitacionId);
+  if (!usuario) return;
+
+  try {
+    const [reservas, habitaciones] = await Promise.all([
+      getReservas(),
+      getHabitaciones()
+    ]);
     
-    if (!habitacion) {
-        mainContainer.innerHTML = '<h1>Error</h1><p>La habitación seleccionada no existe.</p>';
-        return;
-    }
-    
-    tipoEl.textContent = habitacion.tipo;
-    descEl.textContent = habitacion.descripcion;
-    precioEl.textContent = habitacion.precioNoche;
-    huespedesInput.max = habitacion.capacidadPersonas;
-
-    const updateTotal = () => {
-        const fechaLlegada = new Date(document.getElementById('fecha-llegada').value);
-        const fechaSalida = new Date(document.getElementById('fecha-salida').value);
-        const nochesCalculadasEl = document.getElementById('noches-calculadas');
-        const totalPriceEl = document.getElementById('total-price');
-
-        if (fechaSalida > fechaLlegada) {
-            const diffTime = Math.abs(fechaSalida - fechaLlegada);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            nochesCalculadasEl.textContent = diffDays;
-            totalPriceEl.textContent = diffDays * habitacion.precioNoche;
-        } else {
-            nochesCalculadasEl.textContent = 0;
-            totalPriceEl.textContent = 0;
-        }
-    };
-    
-    form.addEventListener('input', updateTotal);
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        statusMsg.textContent = '';
-
-        if (!haySesionActiva()) {
-            statusMsg.textContent = 'Debes iniciar sesión para poder realizar una reserva.';
-            return;
-        }
-        
-        const usuarioId = getUsuarioIdActual();
-        const fechaLlegada = document.getElementById('fecha-llegada').value;
-        const fechaSalida = document.getElementById('fecha-salida').value;
-        const cantidadHuespedes = document.getElementById('cantidad-huespedes').value;
-
-        if (new Date(fechaSalida) <= new Date(fechaLlegada)) {
-            statusMsg.textContent = 'La fecha de salida debe ser posterior a la de llegada.';
-            return;
-        }
-
-        const nuevaReserva = {
-            usuarioId: parseInt(usuarioId),
-            habitacionId: parseInt(habitacionId),
-            fechaLlegada,
-            fechaSalida,
-            cantidadHuespedes: parseInt(cantidadHuespedes),
-            estado: 'confirmada',
-            fechaReserva: new Date().toISOString(),
-            totalPagado: parseInt(document.getElementById('total-price').textContent)
-        };
-
-        const reservaCreada = await createReserva(nuevaReserva);
-
-        if (reservaCreada) {
-            alert('¡Reserva realizada con éxito!');
-            sessionStorage.removeItem('selectedHabitacionId');
-            window.location.href = 'index.html';
-        } else {
-            statusMsg.textContent = 'Hubo un error al procesar tu reserva. Inténtalo de nuevo.';
-        }
-    });
-});
+    const misReservas = reservas.filter(r => r.usuarioId.toString() === usuario.id.toString());
+    renderReservas(misReservas, habitaciones, reservasContainer);
+    handleCancelation(reservasContainer);
+  } catch (error) {
+    console.error('Error cargando reservas:', error);
+    reservasContainer.innerHTML = `<p>${UI_STRINGS.ERROR_LOADING}</p>`;
+  }
+};

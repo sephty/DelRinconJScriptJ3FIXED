@@ -37,3 +37,16 @@
     text-align: center;
     padding: 2rem;
 }
+
+.date-search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.date-search input[type="date"] {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+}

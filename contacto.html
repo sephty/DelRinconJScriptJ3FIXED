@@ -15,19 +15,19 @@
     <div class="container">
       <a href="index.html" class="logo">Rincón del Carmen</a>
       <nav class="desktop-nav">
-        <a href="#habitaciones">Habitaciones</a>
+        <a href="gestion.html">Habitaciones</a>
         <a href="contacto.html">Contacto</a>
+        <a href="list.html" id="admin-link" class="hidden">ADMIN</a>
+        <a href="userpanel.html" id="user-panel-link" class="hidden">Mis Reservas</a>
       </nav>
       <div class="header-actions">
-        <a href="#" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
-        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <div id="user-info" class="hidden">
+          <span id="username-display"></span>
+          <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
       </div>
     </div>
-    <nav class="mobile-menu">
-      <a href="#habitaciones">Habitaciones</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="#" id="mobile-login-btn">Iniciar Sesión</a>
-    </nav>
   </header>
 
   <main>
@@ -72,6 +72,6 @@
     <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
   </footer>
 
-  <script type="module" src="app.js"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
