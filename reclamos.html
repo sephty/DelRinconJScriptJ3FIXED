@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/shared.css">
-  <link rel="stylesheet" href="css/reservaComponent.css">
-  <title>Confirmar Reserva - Hotel Rincón del Carmen</title>
+  <link rel="stylesheet" href="css/reclamosComponent.css">
+  <title>Mis Quejas y Reclamos - Hotel Rincón del Carmen</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <a href="gestion.html">Habitaciones</a>
         <a href="contacto.html">Contacto</a>
         <a href="list.html" id="admin-link" class="hidden">ADMIN</a>
-        <a href="userpanel.html" id="user-panel-link" class="hidden">Mis Reservas</a>
+        <a href="userpanel.html" id="user-panel-link" class="hidden">Panel de Usuario</a>
       </nav>
       <div class="header-actions">
         <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
@@ -27,16 +27,68 @@
       </div>
     </div>
   </header>
-  <main>
-    <h1>Reclamos</h1>
-  </main>
+  
+  <main class="container">
+    <section id="reclamos-section">
+        <h2>Mis Quejas y Reclamos</h2>
+        <button id="add-reclamo-btn" class="btn btn-primary">Crear Queja o Reclamo</button>
+        
+        <form id="reclamo-form" class="admin-form hidden">
+            <h3>Nueva Queja o Reclamo</h3>
+            <input type="hidden" id="reclamo-id">
+            
+            <div class="form-group">
+                <label for="reserva-select">Seleccione su Reserva:</label>
+                <select id="reserva-select" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-asunto">Asunto:</label>
+                <input type="text" id="reclamo-asunto" placeholder="Ej: Problema con la ducha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-tipo">Tipo:</label>
+                <select id="reclamo-tipo" required>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reclamo-descripcion">Descripción:</label>
+                <textarea id="reclamo-descripcion" rows="4" placeholder="Describa su queja o reclamo detalladamente." required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="button" id="cancel-reclamo-btn" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </form>
+
+        <h3>Historial de Quejas y Reclamos</h3>
+        <table id="reclamos-table">
+            <thead>
+                <tr>
+                    <th>Reserva</th>
+                    <th>Asunto</th>
+                    <th>Tipo</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Respuesta del Administrador</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
   </main>
 
   <footer class="main-footer">
     <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
   </footer>
 
-  <script type="module" src="./App/Components/reserva/reservaComponent.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script src="./App/Components/reclamos/reclamosComponent.js" type="module"></script>
+  <script src="./app.js" type="module"></script>
 </body>
 </html>

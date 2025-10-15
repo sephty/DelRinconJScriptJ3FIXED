@@ -374,5 +374,29 @@
       "estado": "confirmada",
       "fechaReserva": "2025-10-10T20:38:39.902Z"
     }
+  ],
+  "reclamos": [
+    {
+      "id": 1,
+      "usuarioId": 2,
+      "reservaId": 1,
+      "asunto": "Problema con la ducha",
+      "tipo": "Queja",
+      "descripcion": "La ducha no tiene agua caliente.",
+      "fecha": "2025-10-15T10:00:00.000Z",
+      "estado": "Pendiente",
+      "respuestaAdmin": ""
+    },
+    {
+      "id": 2,
+      "usuarioId": 3,
+      "reservaId": 1,
+      "asunto": "Toallas sucias",
+      "tipo": "Reclamo",
+      "descripcion": "Las toallas de la habitación no fueron cambiadas.",
+      "fecha": "2025-10-16T11:30:00.000Z",
+      "estado": "Resuelto",
+      "respuestaAdmin": "Se han enviado toallas limpias a su habitación."
+    }
   ]
 }
