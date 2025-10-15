@@ -88,17 +88,39 @@ export const initUserPanel = async () => {
 
   if (!usuario) return;
 
-  try {
-    const [reservas, habitaciones] = await Promise.all([
-      getReservas(),
-      getHabitaciones()
-    ]);
-    
-    const misReservas = reservas.filter(r => r.usuarioId.toString() === usuario.id.toString());
-    renderReservas(misReservas, habitaciones, reservasContainer);
-    handleCancelation(reservasContainer);
-  } catch (error) {
-    console.error('Error cargando reservas:', error);
-    reservasContainer.innerHTML = `<p>${UI_STRINGS.ERROR_LOADING}</p>`;
+  if (reservasContainer) {
+    try {
+      const [reservas, habitaciones] = await Promise.all([
+        getReservas(),
+        getHabitaciones()
+      ]);
+      
+      const misReservas = reservas.filter(r => r.usuarioId.toString() === usuario.id.toString());
+      renderReservas(misReservas, habitaciones, reservasContainer);
+      handleCancelation(reservasContainer);
+    } catch (error) {
+      console.error('Error cargando reservas:', error);
+      reservasContainer.innerHTML = `<p>${UI_STRINGS.ERROR_LOADING}</p>`;
+    }
+  }
+};
+
+export const initReservaForm = async () => {
+  const selectedHabitacionId = sessionStorage.getItem('selectedHabitacionId');
+
+  if (selectedHabitacionId) {
+    try {
+      const habitaciones = await getHabitaciones();
+      const habitacion = habitaciones.find(h => h.id.toString() === selectedHabitacionId);
+
+      if (habitacion) {
+        document.getElementById('habitacion-tipo').textContent = habitacion.tipo;
+        document.getElementById('habitacion-imagen').src = habitacion.imagenes?.length ? `./images/${habitacion.imagenes[0]}` : `https://placehold.co/600x400?text=${encodeURIComponent(habitacion.tipo)}`;
+        document.getElementById('habitacion-descripcion').textContent = habitacion.descripcion;
+        document.getElementById('habitacion-precio').textContent = habitacion.precio;
+      }
+    } catch (error) {
+      console.error('Error cargando la habitación:', error);
+    }
   }
 };
