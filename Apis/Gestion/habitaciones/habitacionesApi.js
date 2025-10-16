@@ -73,5 +73,3 @@ export const deleteHabitacion = async (id) => {
         console.error('Error en deleteHabitacion:', error);
     }
 }
-
-export const reservaActual = async 

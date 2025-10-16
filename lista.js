@@ -8,28 +8,33 @@ const modalTitle = document.getElementById('modal-title');
 const modalBody = document.getElementById('modal-body');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 
-document.addEventListener("DOMContentLoaded", async () => {
+export const initLista = async () => {
     if (!checkAdmin()) {
         return;
     }
 
     const user = getUsuarioActual();
-	document.getElementById("login-btn").classList.add("hidden");
-	const info = document.getElementById("user-info");
-	info.classList.remove("hidden");
-	document.getElementById("username-display").textContent = user.nombreCompleto;
+    document.getElementById("login-btn").classList.add("hidden");
+    const info = document.getElementById("user-info");
+    info.classList.remove("hidden");
+    document.getElementById("username-display").textContent = user.nombreCompleto;
 
-	document.getElementById("logout-btn").addEventListener("click", () => {
-		cerrarSesion();
-		window.location.href = "index.html";
-	});
+    document.getElementById("logout-btn").addEventListener("click", () => {
+        cerrarSesion();
+        window.location.href = "index.html";
+    });
 
-	setupEventListeners();
+    setupEventListeners();
 
-	loadUsuarios();
-	loadHabitaciones();
-	loadReservas();
-});
+    loadUsuarios();
+    loadHabitaciones();
+    loadReservas();
+    
+    // Add a data-section attribute to each form in list.html
+    document.getElementById('usuario-form').dataset.section = 'usuarios';
+    document.getElementById('habitacion-form').dataset.section = 'habitaciones';
+    document.getElementById('reserva-form').dataset.section = 'reservas';
+};
 
 document.querySelectorAll(".admin-tabs button").forEach(btn => {
 	btn.addEventListener("click", () => {
@@ -306,8 +311,3 @@ const refreshData = (type) => {
             break;
     }
 };
-
-// Add a data-section attribute to each form in list.html
-document.getElementById('usuario-form').dataset.section = 'usuarios';
-document.getElementById('habitacion-form').dataset.section = 'habitaciones';
-document.getElementById('reserva-form').dataset.section = 'reservas';

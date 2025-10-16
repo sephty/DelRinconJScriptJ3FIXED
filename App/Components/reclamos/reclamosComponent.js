@@ -3,7 +3,7 @@ import { getUsuarioActual, haySesionActiva, cerrarSesion } from '../../../Apis/G
 import { getReservas } from '../../../Apis/Gestion/reserva/reservaApi.js';
 import { getreclamos, createreclamo, deletereclamo } from '../../../Apis/Gestion/reclamos/reclamoApi.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
+export async function initReclamos() {
     if (!haySesionActiva()) {
         alert('Debes iniciar sesión para ver tus quejas y reclamos.');
         window.location.href = 'iniciarsesion.html';
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault();
         await handleCreateReclamo(usuario.id);
     });
-});
+}
 
 function setupUserUI(usuario) {
     const userInfo = document.getElementById('user-info');

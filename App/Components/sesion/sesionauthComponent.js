@@ -157,3 +157,8 @@ class AuthFormComponent extends HTMLElement {
 }
 
 customElements.define('auth-form-component', AuthFormComponent);
+
+export const initAuth = () => {
+    const authForm = document.createElement('auth-form-component');
+    document.body.appendChild(authForm);
+};

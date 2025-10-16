@@ -95,7 +95,9 @@ export const initUserPanel = async () => {
         getHabitaciones()
       ]);
       
-      const misReservas = reservas.filter(r => r.usuarioId.toString() === usuario.id.toString());
+      console.log('Reservas:', reservas);
+      console.log('Usuario:', usuario);
+      const misReservas = reservas.filter(r => r.usuarioId === usuario.id);
       renderReservas(misReservas, habitaciones, reservasContainer);
       handleCancelation(reservasContainer);
     } catch (error) {
