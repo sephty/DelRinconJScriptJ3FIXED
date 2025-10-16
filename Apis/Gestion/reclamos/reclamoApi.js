@@ -10,6 +10,7 @@
          return await response.json();
      } catch (error) {
          console.error('Error en getreclamos:', error);
+         throw error;
      }
  };
  
@@ -22,6 +23,7 @@
          return await response.json();
      } catch (error) {
          console.error('Error en getreclamoById:', error);
+         throw error;
      }
  };
  
