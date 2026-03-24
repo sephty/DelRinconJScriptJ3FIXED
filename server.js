@@ -7,20 +7,27 @@ const jsonServer = require('json-server');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-// Allow requests from localhost (development) and Netlify (production)
+// CORS Middleware - CRITICAL for Vercel + Netlify
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    
+    // Allow all origins (dev-friendly, can restrict later)
+    res.header('Access-Control-Allow-Origin', origin || '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    
+    next();
+});
+
+// Additional CORS middleware
 app.use(cors({
-    origin: function(origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        
-        // Allow localhost and Netlify domains
-        if (origin.includes('localhost') || origin.includes('127.0.0.1') || origin.includes('netlify.app')) {
-            callback(null, true);
-        } else {
-            callback(new Error('CORS not allowed'));
-        }
-    },
+    origin: true,
     credentials: true
 }));
 app.use(express.json());
