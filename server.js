@@ -9,15 +9,18 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 // Allow requests from localhost (development) and Netlify (production)
-const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:8000',
-    'https://*.netlify.app'  // Netlify preview & production URLs
-];
-
 app.use(cors({
-    origin: allowedOrigins,
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Allow localhost and Netlify domains
+        if (origin.includes('localhost') || origin.includes('127.0.0.1') || origin.includes('netlify.app')) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS not allowed'));
+        }
+    },
     credentials: true
 }));
 app.use(express.json());
