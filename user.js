@@ -46,18 +46,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       const div = document.createElement('div');
       div.classList.add('reserva-card');
       div.innerHTML = `
-        <h3>${habitacion?.nombre || 'Habitación Desconocida'}</h3>
-        <p><strong>Fechas:</strong> ${reserva.fechaEntrada} - ${reserva.fechaSalida}</p>
+        <h3>${habitacion?.tipo || 'Habitación Desconocida'}</h3>
+        <p><strong>Fechas:</strong> ${reserva.fechaLlegada} - ${reserva.fechaSalida}</p>
         <p><strong>Huéspedes:</strong> ${reserva.cantidadHuespedes}</p>
-        <p><strong>Precio Total:</strong> $${reserva.total || 0}</p>
-        <button class="cancelar-btn" data-id="${reserva.id}">Cancelar Reserva</button>
+        <p><strong>Precio Total:</strong> $${reserva.totalPagado || 0}</p>
+        <p><strong>Estado:</strong> ${reserva.estado}</p>
+        <button class="cancel-btn" data-id="${reserva.id}">Cancelar Reserva</button>
       `;
       reservasContainer.appendChild(div);
     });
 
     // Manejo de cancelaciones
     reservasContainer.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('cancelar-btn')) {
+      if (e.target.classList.contains('cancel-btn')) {
         const id = e.target.dataset.id;
         if (confirm('¿Deseas cancelar esta reserva?')) {
           await deleteReserva(id);

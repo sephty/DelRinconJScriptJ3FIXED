@@ -6,6 +6,16 @@
   <link rel="stylesheet" href="css/shared.css" />
   <link rel="stylesheet" href="css/user.css" />
   <title>Mis Reservas - Hotel Rincón del Carmen</title>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    main { animation: fadeInUp 0.6s ease-out; }
+    .reserva-card { border-left: 5px solid #D32F2F; }
+    .cancel-btn { background: #D32F2F; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; transition: all 0.3s; }
+    .cancel-btn:hover { background: #B71C1C; transform: scale(1.05); }
+  </style>
 </head>
 <body>
 
@@ -37,6 +47,7 @@
     <p>© 2025 Hotel Rincón del Carmen | Desarrollado por Joseph Garcia</p>
   </footer>
 
+  <script type="module" src="header-manager.js"></script>
   <script type="module" src="user.js"></script>
 </body>
 </html>

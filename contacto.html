@@ -7,7 +7,17 @@
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/contactoComponent.css">
 
-  <title>Hotel Rincón del Carmen</title>
+  <title>Contacto - Hotel Rincón del Carmen</title>
+  <style>
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    main { animation: slideIn 0.6s ease-out; }
+    .contact-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 8px; }
+    .contact-form input, .contact-form textarea { transition: all 0.3s; }
+    .contact-form input:focus, .contact-form textarea:focus { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  </style>
 </head>
 <body>
 
@@ -15,19 +25,19 @@
     <div class="container">
       <a href="index.html" class="logo">Rincón del Carmen</a>
       <nav class="desktop-nav">
-        <a href="#habitaciones">Habitaciones</a>
+        <a href="gestion.html">Habitaciones</a>
         <a href="contacto.html">Contacto</a>
+        <a href="list.html">ADMIN</a>
+        <a href="userpanel.html">Mis Reservas</a>
       </nav>
       <div class="header-actions">
-        <a href="#" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
-        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        <a href="iniciarsesion.html" class="btn btn-secondary" id="login-btn">Iniciar Sesión</a>
+        <div id="user-info" class="hidden">
+          <span id="username-display"></span>
+          <a href="#" id="logout-btn" class="btn btn-secondary">Cerrar Sesión</a>
+        </div>
       </div>
     </div>
-    <nav class="mobile-menu">
-      <a href="#habitaciones">Habitaciones</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="#" id="mobile-login-btn">Iniciar Sesión</a>
-    </nav>
   </header>
 
   <main>
@@ -73,5 +83,6 @@
   </footer>
 
   <script type="module" src="app.js"></script>
+  <script type="module" src="header-manager.js"></script>
 </body>
 </html>
