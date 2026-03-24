@@ -1,4 +1,12 @@
-const API_URL = "http://localhost:3000";
+// Get API URL - supports both local and production environments
+function getApiUrl() {
+	if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+		return 'http://localhost:3000';
+	}
+	return localStorage.getItem('API_URL') || 'http://localhost:3000';
+}
+
+const API_URL = getApiUrl();
 
 // --- Access Control ---
 document.addEventListener("DOMContentLoaded", () => {

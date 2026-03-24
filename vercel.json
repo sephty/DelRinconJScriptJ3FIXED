@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'Backend only - no build needed'",
+  "public": false,
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "server.js": {
+      "maxDuration": 60
+    }
+  }
+}

@@ -1,5 +1,6 @@
- 
- const API_URL = 'http://localhost:3000/reservas';
+import { API_BASE_URL } from '../../../config.js';
+
+ const API_URL = `${API_BASE_URL}/reservas`;
 
 export const getReservas = async () => {
     try {
