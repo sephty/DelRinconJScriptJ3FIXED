@@ -3,7 +3,32 @@
 Un proyecto personal donde se desarrolla un sistema básico de gestión de reservas para un hotel, con enfoque en **simplicidad**, **modularidad** y **responsividad**.  
 Hecho completamente en **vanilla JavaScript**, usando **JSON Server** como API local para simular una base de datos real.
 
-Se Utiliza: json-server --watch db.json --port 3000 
+## 🚀 Ejecución del Proyecto
+
+Para levantar y probar el sistema de Hotel Rincón del Carmen, sigue estos pasos:
+
+Clonar el repositorio o descargar los archivos del proyecto.
+
+```bash git clone <URL-del-repositorio>```
+```bash cd hotel-rincon-del-carmen```
+
+Instalar JSON Server (si no lo tienes instalado globalmente):
+
+```bash npm install -g json-server```
+
+Iniciar la API local para simular la base de datos:
+
+```bash json-server --watch db.json --port 3000```
+
+Abrir la aplicación en tu navegador:
+index.html → Interfaz pública para los clientes
+gestion.html → Panel de administración
+Probar funcionalidades:
+Registro e inicio de sesión de usuarios
+Crear, listar y cancelar reservas
+Gestionar habitaciones desde el panel de administración
+
+⚠️ Asegúrate de que JSON Server esté corriendo antes de interactuar con cualquier funcionalidad que requiera datos persistentes.
 
 ---
 
@@ -48,5 +73,3 @@ Cuenta con:
 │
 └── db.json # Base de datos local
 
-
-commit origin: https://github.com/sephty/DelRinconJScriptJ3
