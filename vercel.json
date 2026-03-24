@@ -1,13 +1,18 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Backend only - no build needed'",
-  "public": false,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "server.js": {
-      "maxDuration": 60
-    }
   }
 }

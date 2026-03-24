@@ -50,11 +50,16 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error', message: err.message });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Hotel Rincón del Carmen Backend`);
-    console.log(`Server is running on port ${PORT}`);
-    console.log(`API available at: http://localhost:${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/health`);
-    console.log(`Routes: /usuarios, /habitaciones, /reservas`);
-});
+// Export app for Vercel serverless
+module.exports = app;
+
+// Start server locally if not on Vercel
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Hotel Rincón del Carmen Backend`);
+        console.log(`Server is running on port ${PORT}`);
+        console.log(`API available at: http://localhost:${PORT}`);
+        console.log(`Health check: http://localhost:${PORT}/health`);
+        console.log(`Routes: /usuarios, /habitaciones, /reservas`);
+    });
+}
