@@ -9,16 +9,23 @@ Para levantar y probar el sistema de Hotel Rincón del Carmen, sigue estos pasos
 
 Clonar el repositorio o descargar los archivos del proyecto.
 
-```bash git clone <URL-del-repositorio>```
-```bash cd hotel-rincon-del-carmen```
+```
+git clone <URL-del-repositorio>
+cd hotel-rincon-del-carmen
+```
+
 
 Instalar JSON Server (si no lo tienes instalado globalmente):
 
-```bash npm install -g json-server```
+```
+npm install -g json-server
+```
 
 Iniciar la API local para simular la base de datos:
 
-```bash json-server --watch db.json --port 3000```
+```
+json-server --watch db.json --port 3000
+```
 
 Abrir la aplicación en tu navegador:
 index.html → Interfaz pública para los clientes
